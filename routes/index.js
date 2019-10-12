@@ -16,8 +16,8 @@ router.get('/temperature', async (req, res) => {
 
 router.post('/temperature', async ({ body: { temp } }, res) => {
     try {
-        const res = await temperature.setTemp(temp)
-        res.json({ msg: " Temperature Set!", res });
+        const response = await temperature.setTemp(temp)
+        res.json({ msg: " Temperature Set!", response });
     }
     catch (err) {
         res.status(500).json({ msg: " Error Occured!", err: err })
@@ -36,8 +36,8 @@ router.get('/fan', async (req, res) => {
 
 router.post('/fan', async ({ body: { fan } }, res) => {
     try {
-        const res = await temperature.setFan(fan)
-        res.json({ msg: " Fan Set!", res });
+        const response = await temperature.setFan(fan)
+        res.json({ msg: " Fan Set!", response });
     }
     catch (err) {
         res.status(500).json({ msg: " Error Occured!", err: err })
@@ -56,8 +56,8 @@ router.get('/turnon', async (req, res) => {
 
 router.post('/turnon', async ({ body: { turnOn } }, res) => {
     try {
-        const res = await temperature.setTurnOnBreakpoint(turnOn)
-        res.json({ msg: "Turn On Breakpoint Set!", res });
+        const response = await temperature.setTurnOnBreakpoint(turnOn)
+        res.json({ msg: "Turn On Breakpoint Set!", response });
     }
     catch (err) {
         res.status(500).json({ msg: " Error Occured!", err: err })
