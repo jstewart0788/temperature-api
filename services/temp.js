@@ -27,17 +27,14 @@ module.exports = class TempServcie {
     }
 
     async setTemp(temperature) {
-        const id = await this.getTempID();
-        return Temp.updateOne({ id }, { temperature }).exec();
+        return Temp.updateOne({}, { temperature }).exec();
     }
 
     async setFan(fan) {
-        const id = await this.getTempID();
-        return Temp.updateOne({ id }, { fan }).exec();
+        return Temp.updateOne({}, { fan }).exec();
     }
 
     async setTurnOnBreakpoint(turnOn) {
-        const id = await this.getTempID();
-        return Temp.updateOne({ id }, { turnOn }).exec();
+        return Temp.updateOne({}, { turnOn }).exec();
     }
 };
