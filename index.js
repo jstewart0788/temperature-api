@@ -1,10 +1,19 @@
-const path = require("path");
 const express = require("express");
 const logger = require("morgan");
 const bodyParser = require("body-parser");
 const cookieParser = require('cookie-parser');
+const mongoose = require("mongoose");
+require('dotenv').config();
 
 const app = express();
+const api = require('./routes');
+//DB Conenction
+mongoose.connect(
+    `mongodb://${process.env.MONGO_USER_NAME}:${
+      process.env.MONGO_PASSWORD
+    }@ds333248.mlab.com:33248/heroku_3vcm7bjb`,
+    { useNewUrlParser: true }
+  );
 
 //Middleware
 app.use(logger('dev'));
@@ -13,14 +22,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 //Initialize API Routes
-app.get('/temperature', (req, res) => {
-    res.json({ temp: '89' });
-})
-
-app.post('/temperature', (req, res) => {
-    console.log('TEST', req.body);
-    res.json({ msg: `temperature is: ${req.body.temp}` });
-})
+app.use('/api', api)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
