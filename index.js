@@ -13,10 +13,15 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 //Initialize API Routes
+app.get('/temperature', (req, res) => {
+    res.json({ temp: '89' });
+})
+
 app.post('/temperature', (req, res) => {
     console.log('TEST', req.body);
     res.json({ msg: `temperature is: ${req.body.temp}` });
 })
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
     var err = new Error('Not Found');
