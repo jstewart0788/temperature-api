@@ -4,6 +4,16 @@ const Temperature = require('../services/temp');
 const router = express.Router();
 const temperature = new Temperature();
 
+router.get('/state', async (req, res) => {
+    try {
+        const state = await temperature.fetchTemp()
+        res.json({ state });
+    }
+    catch (err) {
+        res.status(500).json({ msg: " Error Occured!" })
+    }
+})
+
 router.get('/temperature', async (req, res) => {
     try {
         const temp = await temperature.fetchTemp()
