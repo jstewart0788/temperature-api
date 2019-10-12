@@ -10,17 +10,17 @@ router.get('/state', async (req, res) => {
         res.json({ state });
     }
     catch (err) {
-        res.status(500).json({ msg: " Error Occured!" })
+        res.status(500).json({ msg: " Error Occured!", err })
     }
 })
 
 router.get('/temperature', async (req, res) => {
     try {
-        const temp = await temperature.fetchTemp()
+        const temp = await temperature.getTemperatue()
         res.json({ temp });
     }
     catch (err) {
-        res.status(500).json({ msg: " Error Occured!" })
+        res.status(500).json({ msg: " Error Occured!", err })
     }
 })
 
@@ -30,7 +30,7 @@ router.post('/temperature', async ({ body: { temp } }, res) => {
         res.json({ msg: " Temperature Set!", response });
     }
     catch (err) {
-        res.status(500).json({ msg: " Error Occured!", err: err })
+        res.status(500).json({ msg: " Error Occured!", err })
     }
 })
 
@@ -40,7 +40,7 @@ router.get('/fan', async (req, res) => {
         res.json({ fan });
     }
     catch (err) {
-        res.status(500).json({ msg: " Error Occured!" })
+        res.status(500).json({ msg: " Error Occured!", err })
     }
 })
 
@@ -50,7 +50,7 @@ router.post('/fan', async ({ body: { fan } }, res) => {
         res.json({ msg: " Fan Set!", response });
     }
     catch (err) {
-        res.status(500).json({ msg: " Error Occured!", err: err })
+        res.status(500).json({ msg: " Error Occured!", err })
     }
 })
 
@@ -60,7 +60,7 @@ router.get('/turnon', async (req, res) => {
         res.json({ turnOn });
     }
     catch (err) {
-        res.status(500).json({ msg: " Error Occured!" })
+        res.status(500).json({ msg: " Error Occured!", err })
     }
 })
 
@@ -70,7 +70,7 @@ router.post('/turnon', async ({ body: { turnOn } }, res) => {
         res.json({ msg: "Turn On Breakpoint Set!", response });
     }
     catch (err) {
-        res.status(500).json({ msg: " Error Occured!", err: err })
+        res.status(500).json({ msg: " Error Occured!", err })
     }
 })
 
