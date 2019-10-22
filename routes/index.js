@@ -26,6 +26,7 @@ router.get('/temperature', async (req, res) => {
 
 router.post('/temperature', async ({ body: { temp } }, res) => {
     try {
+        console.log(temp, 'temp');
         const response = await temperature.setTemp(temp)
         res.json({ msg: " Temperature Set!", response });
     }
@@ -46,6 +47,7 @@ router.get('/fan', async (req, res) => {
 
 router.post('/fan', async ({ body: { fan } }, res) => {
     try {
+        console.log(fan, 'fan');
         const response = await temperature.setFan(fan)
         res.json({ msg: " Fan Set!", response });
     }
@@ -66,6 +68,7 @@ router.get('/turnon', async (req, res) => {
 
 router.post('/turnon', async ({ body: { turnOn } }, res) => {
     try {
+        console.log(turnOn, 'turnOn');
         const response = await temperature.setTurnOnBreakpoint(turnOn)
         res.json({ msg: "Turn On Breakpoint Set!", response });
     }
